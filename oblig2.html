@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+
+<html>
+	<header>
+		<meta charset="utf-8" / >
+		<title> Oblig 2 </title>
+		
+		<script>
+			window.onload = oppstart;
+			function oppstart(){
+				document.getElementById("manytext").onclick = txttall;
+				document.getElementById("pengerår").onclick = renter;
+				hundred();
+				reverse();
+			}
+			
+		// ------ Oppgave 1
+			function txttall(){
+				var textget = document.getElementById("txtput").value
+				var tallget = document.getElementById("tallput").value
+				var muchtext = document.getElementById("xtext")
+				muchtext.innerHTML =""
+				for (i=0; i < tallget; i++) {
+					muchtext.innerHTML += textget+"<br />"
+				}
+				
+			}
+			
+		// ------- Oppgave 2
+			var array = []
+			function hundred(){
+				var hundredinsert = document.getElementById("lotsofnumbers")
+				var a = 100
+				for (i=0; i < a; i++){
+					hundredinsert.innerHTML += parseInt(i+1)+", "
+					array.push(parseInt(i+1))
+				}
+			}
+			
+			function reverse(){
+				
+				var hundredreverse = document.getElementById("lotsofnumbers")
+				hundredreverse.innerHTML += "<br />"+"<br />"
+				for (i=99; i > -1; i--){
+					hundredreverse.innerHTML += array[i]+", "
+				}
+			}
+			
+		// ------- Oppgave 3
+			function renter(){
+				var pengtall = document.getElementById("penger").value
+				var årtall = document.getElementById("år").value
+				var total = document.getElementById("total")
+				var rente = document.getElementById("rente").value
+				var tot = pengtall
+				total.innerHTML =""
+				for (i=0; i < årtall; i++) {
+					tot = Math.floor(tot = tot*rente)
+					total.innerHTML += "Etter " + parseInt(i+1) + " har du "+tot + " penger på banken"+"<br />"
+					
+				}
+			}
+		</script>
+	</header>
+	
+	<body>
+		<h1> Tobias Hansen, informatikk 2015 </h1>
+		<h3> Oppgave 1 </h3>
+		Text: <input type="text" id="txtput"> 
+		Tall: <input type="number" id="tallput"> 
+		<button id="manytext" type="button"> Klikk her </button>
+		<p id="xtext"> </p>
+		<br /> <br />
+		
+		
+		<h3> oppgave 2 </h3>
+		<p id="lotsofnumbers"> </p>
+		<br /> <br />
+		
+		
+		<h3> oppgave 3 </h3>
+		Penger: <input id="penger" type="number" /> <br />
+		Renter: <input id="rente" type="number" /> <br />
+		Ant år: <input id="år" type="number" /> <br />
+		<button id="pengerår" type="button"> Klikker her </button>
+		<p id="total"> </p>
+		<br /> <br />
+		
+		
+		
+		
+		
+	</body>
+</html>
