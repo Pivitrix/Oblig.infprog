@@ -28,12 +28,20 @@
 			
 		// ------- Oppgave 2
 			var array = []
-			function hundred(){
-				var hundredinsert = document.getElementById("lotsofnumbers")
+			function hundred(){              // --- Id names, i cry everytiem (╯°□°）╯︵ ┻━┻
+				var firstinsert = document.getElementById("lotsofnumbers")
+				var thirdinsert = document.getElementById("morenumbers")
+				var fourthinsert = document.getElementById("evenmorenumbers")
+				var fifthinsert = document.getElementById("evenevenmorenumbers")
+				var sixthinsert = document.getElementById("thisisstupidnumbers")
 				var a = 100
 				for (i=0; i < a; i++){
-					hundredinsert.innerHTML += parseInt(i+1)+", "
+					firstinsert.innerHTML += parseInt(i+1) + ", "
+					thirdinsert.innerHTML += parseInt(i+1)/2 + ", "
 					array.push(parseInt(i+1))
+					if (0 < i && i % 3 === 0) {
+						fourthinsert.innerHTML += i +", ";
+					}
 				}
 			}
 			
@@ -74,7 +82,13 @@
 		
 		
 		<h3> oppgave 2 </h3>
+		<h4> [1, 100] & [100, 1]</h4>
 		<p id="lotsofnumbers"> </p>
+		<h4> alt fra 1 til 100 delt pa to </h4>
+		<p id="morenumbers"> </p>
+		<br />
+		<h4> tall fra 1 til 100 som kan deles pa 3 </h4>
+		<p id="evenmorenumbers"> </p>
 		<br /> <br />
 		
 		
