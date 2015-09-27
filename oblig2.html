@@ -34,17 +34,29 @@
 				var fourthinsert = document.getElementById("evenmorenumbers")
 				var fifthinsert = document.getElementById("evenevenmorenumbers")
 				var sixthinsert = document.getElementById("thisisstupidnumbers")
+				var seventhinsert = document.getElementById("everyother")
 				var a = 100
+		//-------- fra 1 til 100 og [1, 100]/2
 				for (i=0; i < a; i++){
-					firstinsert.innerHTML += parseInt(i+1) + ", "
-					thirdinsert.innerHTML += parseInt(i+1)/2 + ", "
 					array.push(parseInt(i+1))
+					firstinsert.innerHTML += parseInt(i+1) + ", "
+					thirdinsert.innerHTML += parseInt(i+1)/2 + ", "					
+				}
+		//-------- tall delelige pa tre, partall og oddetall		
+				for(i=0; i <= a; i++){
 					if (0 < i && i % 3 === 0) {
 						fourthinsert.innerHTML += i +", ";
 					}
+					if (0 < i && i % 2 === 0 ){
+						fifthinsert.innerHTML += i +", "
+						
+					}
+					else if (0 < i && i % 2 != 0){
+						sixthinsert.innerHTML += i +", "
+					}	
 				}
-			}
-			
+				
+		//-------- fra 100 til 1
 			function reverse(){
 				
 				var hundredreverse = document.getElementById("lotsofnumbers")
@@ -53,6 +65,15 @@
 					hundredreverse.innerHTML += array[i]+", "
 				}
 			}
+			
+		//-------- annethvert tall negativt og positivt
+				for (i = 1; i < a; i += 2){
+					seventhinsert.innerHTML += i +", "
+					seventhinsert.innerHTML += parseInt(i+1)*-1 +", "
+				}
+			}
+				
+		
 			
 		// ------- Oppgave 3
 			function renter(){
@@ -89,7 +110,16 @@
 		<br />
 		<h4> tall fra 1 til 100 som kan deles pa 3 </h4>
 		<p id="evenmorenumbers"> </p>
-		<br /> <br />
+		<br /> 
+		<h4> Partall fra 0 til 100 </h4>
+		<p id="evenevenmorenumbers"> </p>
+		<br /> 
+		<h4> Oddetall fra 0 til 100</h4>
+		<p id="thisisstupidnumbers"> </p>
+		<br /> 	
+		<h4> Annethvert tall positivt og negativt </h4>
+		<p id="everyother"> </p>
+		<br />  <br /> 
 		
 		
 		<h3> oppgave 3 </h3>
