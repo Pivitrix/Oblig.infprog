@@ -8,6 +8,7 @@
 			window.onload = oppstart;
 			function oppstart(){
 				combine();
+				document.getElementById("makecal").onclick = kalender;
 			}
 	//-------- Overkompenserende loop Oppgave 4		
 			function combine(){
@@ -22,7 +23,38 @@
 					}
 				}
 			}
-		</script>
+			
+			function kalender () {
+				var getstart = parseInt(document.getElementById("daystart").value)
+				var getend = parseInt(document.getElementById("dayend").value)
+				var kalput = document.getElementById("kalender")
+				kalput.innerHTML = ""
+				for (i=getstart; i <= getend; i++){
+						if (i === 1){
+							kalput.innerHTML += "<tr>"
+						}
+						else if (i === 2){
+								kalput.innerHTML += "AAA"
+							}
+							
+						if (i <= 2 && i > 0){
+							kalput.innerHTML += "<td>"+i + "</td>"
+							if (i%2 === 0){
+								kalput.innerHTML += "AAA"
+							}
+						}
+						if (i > 2){
+							kalput.innerHTML += "<td>"+i + "</td>"
+							if ((i-2)%7 === 0){
+								kalput.innerHTML += "<tr> </tr>"
+							}
+						}
+						
+						
+					
+				}
+			}
+ 		</script>
 	</head>
 
 	<body>
@@ -33,7 +65,13 @@
 		<br /> <br />
 		
 		<h3> Oppgave 5 </h3>
-		<p> </p>
+		Kalender start: <input type="number" id="daystart" /> <br />
+		Kalender slutt: <input type ="number" id="dayend" />
+		<button id="makecal" type="button"> Klikk her </button>
+		
+		<table id="kalender">
+			
+		</table>
 		
 	</body>
 
