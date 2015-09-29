@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+
+<html>
+	<header>
+		<meta charset="utf-8" / >
+		<title> oblig 2 del 3 </title>
+		
+		<script>
+			window.onload = start;
+			function start(){
+				document.getElementById("actionmåned").onclick = month;
+				
+			}
+		
+			var dagerarray = []
+			var månedarray = ["Januar", "Februar", "Mars", "April",
+						  "Mai", "Juni", "Juli", "August",
+						  "September", "Oktober", "November", "Desember"
+						 ]
+			var getdager = ["31", "28", "31", "30",
+						    "31", "30", "31", "31",
+						    "30", "31", "30", "31"
+						 ]
+			
+			for (i=1; i < 31; i++){
+					dagerarray.push(i)
+				}
+						 
+			function month(){
+				var måned = document.getElementById("velgmåned").value
+				var inputmåned = document.getElementById("showmåned")
+				
+				inputmåned.innerHTML = "Dager i " + månedarray[(parseInt(måned)-1)] +" "+getdager[(parseInt(måned)-1)]
+			}
+		</script>
+	</header>
+	
+	<body>
+		<h2> Tobias Hansen, informatikk 2015, infprog oblig 2 </h2>
+		
+		Velg måned: <input type="number" id="velgmåned">
+		<button type="button" id="actionmåned"> Klikk her </button>
+		<p id="showmåned"> </p>
+	</body>
+</html>
