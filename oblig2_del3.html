@@ -9,7 +9,8 @@
 			window.onload = start;
 			function start(){
 				document.getElementById("actionmåned").onclick = month;
-				
+				document.getElementById("executerannames").onclick = rannames;
+				document.getElementById("executestringcount").onclick = stringcount;
 			}
 		
 			var dagerarray = []
@@ -20,6 +21,10 @@
 			var getdager = ["31", "28", "31", "30",
 						    "31", "30", "31", "31",
 						    "30", "31", "30", "31"
+						 ]
+			var names = ["Hans", "Ole", "Nils", "Olav",
+						 "Per", "Knut", "Kari", "Line",
+						 "Pia"
 						 ]
 			
 			for (i=1; i < 31; i++){
@@ -32,14 +37,75 @@
 				
 				inputmåned.innerHTML = "Dager i " + månedarray[(parseInt(måned)-1)] +" "+getdager[(parseInt(måned)-1)]
 			}
+			
+			
+			function rannames(){
+				var testarray = []
+				var limit = 3
+				var insertname = document.getElementById("printnames")
+				insertname.innerHTML = " "
+				for (i=0; i < limit; i++){
+					a = Math.floor(Math.random() *parseInt(names.length))
+					check = names[a]
+					if (check === testarray[0]){
+						limit++
+					}
+						else if (check === testarray[1]){
+							limit++
+						}
+							else if (check === testarray[2]){
+								limit++
+							}
+								else {testarray.push(check)}
+				}
+				for (x=0; x < testarray.length; x++){
+					insertname.innerHTML += testarray[x]+" ";
+				}
+			}
+			
+			function stringcount(){
+				var readtxt = document.getElementById("gettxt").value
+				var settxt = document.getElementById("txtshow")
+				var setcount = document.getElementById("txtcount")
+				txtarray =  readtxt.split(" ")
+				settxt.innerHTML = ""
+				for (i=0; i < txtarray.length; i++){
+					var count = 0 
+					var check = txtarray[i]
+					for (x=0; x < txtarray.length; x++){
+						if (check === txtarray[x]){
+							count++
+						}
+					}
+					settxt.innerHTML += check+":"+count+" "	
+				}
+			}
+			
 		</script>
 	</header>
 	
 	<body>
 		<h2> Tobias Hansen, informatikk 2015, infprog oblig 2 </h2>
 		
+		<h3> oppgave 7 </h3>
 		Velg måned: <input type="number" id="velgmåned">
 		<button type="button" id="actionmåned"> Klikk her </button>
 		<p id="showmåned"> </p>
+		<br /> <br />
+		
+		
+		<h3> oppgave 8 </h3>
+		<p id="printnames"> </p>
+		<button type="button" id="executerannames"> Klikk her </button>
+		<br /> <br />
+		
+		
+		<h3> Oppgave 9B </h3>
+		<p> Skriv en tekst med ord separert med mellomromm som vanlig </p>
+		<input type="text" id="gettxt"> 
+		<button id="executestringcount" type="button"> Klikk her </button>
+		<p id="txtshow"> </p>
+		<p id="txtcount"> </p>
+		
 	</body>
 </html>
