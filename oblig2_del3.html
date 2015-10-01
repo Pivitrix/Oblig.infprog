@@ -67,6 +67,7 @@
 				var readtxt = document.getElementById("gettxt").value
 				var settxt = document.getElementById("txtshow")
 				var setcount = document.getElementById("txtcount")
+				var result = []
 				txtarray =  readtxt.split(" ")
 				settxt.innerHTML = ""
 				for (i=0; i < txtarray.length; i++){
@@ -77,7 +78,11 @@
 							count++
 						}
 					}
-					settxt.innerHTML += check+":"+count+" "	
+					if (result.indexOf(check) === -1){
+						result.push(check)
+						settxt.innerHTML += check+":"+count+" "
+						}
+					
 				}
 			}
 			
