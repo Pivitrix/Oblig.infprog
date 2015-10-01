@@ -1,100 +1,133 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<meta charset="UTF-8" />
-		<title> infprog 16.09.15</title>
+		<meta charset ="utf-8">
+		<title> Oblig 2 del 2 </title>
 		
-	<!-- Startfunksjon + Oppgave 1-2 03.09.15 -->
 		<script>
-			
-			window.onload = start;
-			function start() {
-				navn();
-				navnlegg();
-				popup();
-				}
-				
-			
-			function navn() {
-				var oppgave1 = document.getElementById("Oppgave1")
-					oppgave1.innerHTML = "Tobias Hansen"
-				}
-				
-			function navnlegg() {
-				var oppgave2 = document.getElementById("oppgave2")
-				var add = document.createTextNode("Tobias Hansen")
-				oppgave2.appendChild(add);
-				}
-		</script>
-	
-	<!-- Oppgave 3-4 07.09.15 -->
-		<script>
-				
-			function popup () {
-				var altxt = document.getElementById("txtnavn").value;
-				if (altxt.length >= 1) {
-						alert("Hei " + altxt);
-				}
-					else {
-						alert("Enter some letters")
+			window.onload = oppstart;
+			function oppstart(){
+				combine();
+				document.getElementById("makecal").onclick = kalender;
+				arraynonsense();
+			}
+	//-------- Overkompenserende loop Oppgave 4		
+			function combine(){
+				var getposs = document.getElementById("possibility")		
+				for (i=1; i <= 5; i++){
+					for (x=1; x <= 5; x++){
+						for (c=1; c <= 5; c++){
+							for (d=1; d <= 5; d++){
+								getposs.innerHTML += i+String(x)+c+String(d) +", "
+							}
+						}
 					}
+				}
 			}
 			
-			function matte () {
-				var tall = parseInt(document.getElementById("tallput").value);
-				var tall2 = parseInt(document.getElementById("tallput2").value);
-				var mattepar = document.getElementById("mattepar");
-				var sum = tall+tall2
-				var diff = tall-tall2
-				var prod = tall*tall2
-				var kvot = tall/tall2
-				mattepar.innerHTML = "ADDISJON:"+ sum +
-									 " DIFFERANSE:"+diff +
-									 " PRODUKT:"+prod +
-									 " KVOTI:"+kvot
+			function kalender () {
+				var getstart = parseInt(document.getElementById("daystart").value)
+				var getend = parseInt(document.getElementById("dayend").value)
+				var kalput = document.getElementById("kalender")
+				kalput.innerHTML = ""
+				for (i=getstart; i <= getend; i++){
+						if (i === 1){
+							kalput.innerHTML += "<tr>"
+						}
+						else if (i === 2){
+								kalput.innerHTML += "<tr>"
+							}
+							
+						if (i <= 2 && i > 0){
+							kalput.innerHTML += "<td>"+i + "</td>"
+							if (i%2 === 0){
+								kalput.innerHTML += "</tr>"
+							}
+						}
+						if (i > 2){
+							kalput.innerHTML += "<td>"+i + "</td>"
+							if ((i-2)%7 === 0){
+								kalput.innerHTML += "<tr> </tr>"
+							}
+						}
+						
+						
+					
+				}
 			}
-		</script>
+			
+			var array = []
+			function arraynonsense (){
+				var insertarray = document.getElementById("arraystuff")
+				
+				for (i=0; i < 15; i++){
+					array.push(parseInt(i))
+					insertarray.innerHTML += array[i] + " "
+				} 
+				insertarray.innerHTML += "<br />"
+				
+				for (i=(array.length)-1; i >= 0; i--){
+					insertarray.innerHTML += array[i] + " "
+				}
+				insertarray.innerHTML += "<br />"
+				
+				for (i=0; i < array.length; i+=2){
+					insertarray.innerHTML += array[i] + " "
+				}
+				insertarray.innerHTML += "<br />"
+				
+				for (i=0; i < array.length; i++){
+					if (parseInt(array[i]) < 10){
+						insertarray.innerHTML += array[i] + " "
+					}
+				}
+				insertarray.innerHTML += "<br />"
+
+				var parsum = 0
+				for (i=0; i < array.length; i++){
+					if (parseInt(array[i])%2 === 0 && i > 0){
+						insertarray.innerHTML += array[i] + " "
+						parsum += parseInt(array[i])
+					}
+				}
+				insertarray.innerHTML += "<br />"
+				insertarray.innerHTML += array.length
+				insertarray.innerHTML += "<br />"
+				
+				var arraysumm = 0
+				for (i=0; i < array.length; i++){
+					arraysumm += parseInt(array[i])
+				}
+				insertarray.innerHTML += arraysumm/array.length + "<br />"
+				insertarray.innerHTML += parsum + "<br />"
+			}
+			
+ 		</script>
 	</head>
+
 	<body>
-		<h3> Tobias Hansen, 
-			 informatikk design og utviklingikling av it-systemer 2015
-		</h3>
+		<h1> Tobias Hansen, informatikk 2015 oblig 2 del 2 </h1>
 		
-	<!-- Oppgave 1-2 03.09.15 -->
-		<div>
-			<h2> 03.09.15</h2>
-			<h3> Oppgave 1 </h3>
-			<p id="Oppgave1"> </p> 
+		<h3> Oppgave 4 </h3>
+		<p id="possibility"> </p>
+		<br /> <br />
+		
+		<h3> Oppgave 5 </h3>
+		Kalender start: <input type="number" id="daystart" /> <br />
+		Kalender slutt: <input type ="number" id="dayend" />
+		<button id="makecal" type="button"> Klikk her </button>
+		
+		<table id="kalender">
+			
+		</table>
+		<br /> <br />
+		
+		<h3> Oppgave 6 </h3>
+		<p id="arraystuff"> </p>
 		
 		
-			<h3> Oppgave 2</h3>
-			<p id="oppgave2"> Jeg elsker å progge hilsen: </p>
-			<br /> <br />
-		</div> 
-		
-	<!-- Oppgave 3-4 07.09.15 -->
-		<div>
-			<h2> 07.09.15 </h2>
-			<h3> Oppgave 3 </h3>
-			Navn:<input type="text" id="txtnavn" />
-			<button id="knappnavn" 
-					onclick="popup()" 
-					type="button">
-					Klikk her 
-			</button> <br />
-			
-			
-			<h3> Oppgave 4</h3>
-			Tall1: <input type="number" id="tallput" />
-			Tall2: <input type="number" id="tallput2" />
-			<button id="knapptall" 
-					onclick="matte()"
-					type="button">
-					Klikk her
-			</button>
-			
-			<p id="mattepar"> </p>
-			
-		</div>
 	</body>
+
 </html>
+
+
